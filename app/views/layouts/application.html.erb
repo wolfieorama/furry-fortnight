@@ -7,10 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default">
     <div class="container">
       <nav class="navbar-brand">N0TiFy</nav>
-      <% if user.signed_in? %>
+      <% if user_signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to current_user.name %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>

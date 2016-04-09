@@ -24,7 +24,7 @@ class ForumThreadsController < ApplicationController
   # POST /forum_threads
   # POST /forum_threads.json
   def create
-    @forum_thread = ForumThread.new(forum_thread_params)
+    @forum_thread = current_user.forum_threads.new(forum_thread_params)
 
     respond_to do |format|
       if @forum_thread.save
@@ -69,6 +69,6 @@ class ForumThreadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def forum_thread_params
-      params.require(:forum_thread).permit(:title)
+      params.require(:forum_thread).permit(:title, :user_id)
     end
 end

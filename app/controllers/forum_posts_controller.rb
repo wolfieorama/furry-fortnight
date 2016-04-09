@@ -31,7 +31,7 @@ class ForumPostsController < ApplicationController
         format.html { redirect_to @forum_thread, notice: 'Forum post was successfully created.' }
         format.json { render :show, status: :created, location: @forum_post }
       else
-        format.html { render :forum_thread/show }
+        format.html { render :new }
         format.json { render json: @forum_post.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,6 @@ class ForumPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def forum_post_params
-      params.require(:forum_post).permit(:body)
+      params.require(:forum_post).permit(:body, :user_id)
     end
 end

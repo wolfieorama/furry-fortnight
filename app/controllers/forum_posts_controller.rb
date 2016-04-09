@@ -24,14 +24,14 @@ class ForumPostsController < ApplicationController
   # POST /forum_posts
   # POST /forum_posts.json
   def create
-    @forum_post = ForumPost.new(forum_post_params)
+    @forum_post = @forum_thread.forum_posts.new(forum_post_params)
 
     respond_to do |format|
       if @forum_post.save
-        format.html { redirect_to @forum_post, notice: 'Forum post was successfully created.' }
+        format.html { redirect_to @forum_thread, notice: 'Forum post was successfully created.' }
         format.json { render :show, status: :created, location: @forum_post }
       else
-        format.html { render :new }
+        format.html { render :forum_thread/show }
         format.json { render json: @forum_post.errors, status: :unprocessable_entity }
       end
     end

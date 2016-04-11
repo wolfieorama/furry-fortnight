@@ -9,7 +9,7 @@
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
-      <nav class="navbar-brand">N0TiFy</nav>
+      <nav class="navbar-brand"><%= link_to "N0TiFy", root_path %></nav>
       <% if user_signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to current_user.email %></li>

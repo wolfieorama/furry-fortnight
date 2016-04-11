@@ -1,5 +1,6 @@
 class ForumPostsController < ApplicationController
-  before_action :set_forum_post, only: [:show, :edit, :update, :destroy]
+  # before_action :set_forum_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_forum_thread
 
   # GET /forum_posts
   # GET /forum_posts.json
@@ -24,7 +25,6 @@ class ForumPostsController < ApplicationController
   # POST /forum_posts
   # POST /forum_posts.json
   def create
-
     @forum_post = @forum_thread.forum_posts.new(forum_post_params)
     @forum_post.user = current_user
 
@@ -65,10 +65,14 @@ class ForumPostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_forum_post
-      @forum_post = ForumPost.find(params[:id])
+
+    def set_forum_thread
+      @forum_thread = ForumThread.find(params[:forum_thread_id])
     end
+    # Use callbacks to share common setup or constraints between actions.
+    # def set_forum_post
+    #   @forum_post = ForumPost.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def forum_post_params

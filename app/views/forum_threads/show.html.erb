@@ -7,7 +7,7 @@
 <hr>
 <% @forum_thread.forum_posts.includes(:user).each do |forum_post| %>
   <div>
-    <p><%= forum_post.user.username %> posted:</p>
+    <p><%= forum_post.user %> posted:</p>
     <%= simple_format forum_post.body %>
   </div>
 

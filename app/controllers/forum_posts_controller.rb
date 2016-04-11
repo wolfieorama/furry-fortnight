@@ -24,7 +24,9 @@ class ForumPostsController < ApplicationController
   # POST /forum_posts
   # POST /forum_posts.json
   def create
+
     @forum_post = @forum_thread.forum_posts.new(forum_post_params)
+    @forum_post.user = current_user
 
     respond_to do |format|
       if @forum_post.save
@@ -36,6 +38,7 @@ class ForumPostsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /forum_posts/1
   # PATCH/PUT /forum_posts/1.json
